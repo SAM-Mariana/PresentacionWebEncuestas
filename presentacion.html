@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación de Imágenes</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .slider {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        /* Cambia las imágenes según prefieras */
+        .slide:nth-child(1) {
+            background-image: url('./img/1.jpg');
+        }
+        .slide:nth-child(2) {
+            background-image: url('./img/2.jpg');
+        }
+        .slide:nth-child(3) {
+            background-image: url('./img/3.jpg');
+        }
+        .slide:nth-child(4) {
+            background-image: url('./img/4.jpg');
+        }
+        .slide:nth-child(5) {
+            background-image: url('./img/5.jpg');
+        }
+        .slide:nth-child(6) {
+            background-image: url('./img/6.jpg');
+        }
+        .slide:nth-child(7) {
+            background-image: url('./img/7.jpg');
+        }
+        .slide:nth-child(8) {
+            background-image: url('./img/8.jpg');
+        }
+        .slide:nth-child(9) {
+            background-image: url('./img/9.jpg');
+        }
+        .slide:nth-child(10) {
+            background-image: url('./img/10.jpg');
+        }
+        .slide:nth-child(11) {
+            background-image: url('./img/11.jpg');
+        }
+        .slide:nth-child(12) {
+            background-image: url('./img/12.jpg');
+        }
+        
+
+        @keyframes fade {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slider">
+        <div class="slide active"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        let currentIndex = 0;
+
+        // Función para cambiar a la diapositiva anterior
+        function showPreviousSlide() {
+            slides[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            slides[currentIndex].classList.add('active');
+        }
+
+        // Función para cambiar a la diapositiva siguiente
+        function showNextSlide() {
+            slides[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % slides.length;
+            slides[currentIndex].classList.add('active');
+        }
+
+        // Manejo de eventos de teclado
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowLeft') {
+                showPreviousSlide(); // Flecha izquierda
+            } else if (event.key === 'ArrowRight') {
+                showNextSlide(); // Flecha derecha
+            }
+        });
+    </script>
+</body>
+</html>
